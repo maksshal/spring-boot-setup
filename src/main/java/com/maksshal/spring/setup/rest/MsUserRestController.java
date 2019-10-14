@@ -2,6 +2,7 @@ package com.maksshal.spring.setup.rest;
 
 import com.maksshal.spring.setup.db.entities.MsUser;
 import com.maksshal.spring.setup.db.repositories.MsUserRepository;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ public class MsUserRestController {
     @Autowired
     private MsUserRepository userRepository;
 
+    @ApiOperation(value = "Retrieve a user by a last name")
     @GetMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
     public MsUser getUser(String lastName) throws InterruptedException {
         return userRepository.findByLastName(lastName);
